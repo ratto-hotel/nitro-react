@@ -10,11 +10,11 @@
         margin: auto;
         right: 0;
         left: 0;
-        background: url('../../assets/images/loading/connecting-duck-spritesheet.png') no-repeat top left;
-        width: 235px;
-        height: 127px;
-        animation: 1.5s connecting-duck infinite step-end;
-        transform: scale(0.5);
+        background: url('../../assets/images/loading/branca_de_neve.png') no-repeat top left;
+        width: 300px;
+        height: 300px;
+        background-size: contain;
+        image-rendering: pixelated;
     }
 
     .nitro-logo {

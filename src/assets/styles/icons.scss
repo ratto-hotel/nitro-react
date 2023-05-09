@@ -9,10 +9,12 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
-    filter: grayscale(1);
 
-    &:hover {
-        filter: grayscale(0);
+    &.no-color {
+        filter: grayscale(1);
+        &:hover {
+            filter: grayscale(0);
+        }
     }
 
     &.icon-nitro-light {
