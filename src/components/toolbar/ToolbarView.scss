@@ -6,9 +6,7 @@
     height: $toolbar-height;
     z-index: $toolbar-zindex;
     pointer-events: all;
-    background: rgba($dark, 0.95);
-    box-shadow: inset 0px 5px lighten(rgba($dark, 0.6), 2.5),
-        inset 0 -4px darken(rgba($dark, 0.6), 4);
+    background: rgba($light, 0.95);
 
     .navigation-item {
         position: relative;
@@ -17,7 +15,7 @@
             width: 50px;
             height: 45px;
             overflow: hidden;
-    
+
             .avatar-image {
                 margin-left: -5px;
                 margin-top: 25px;
