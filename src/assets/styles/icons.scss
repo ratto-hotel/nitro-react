@@ -9,6 +9,11 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
+    filter: grayscale(1);
+
+    &:hover {
+        filter: grayscale(0);
+    }
 
     &.icon-nitro-light {
         background-image: url('../images/nitro/nitro-n-light.svg');
@@ -34,6 +39,14 @@
         background-image: url('../images/toolbar/icons/rooms.png');
         width: 44px;
         height: 30px;
+    }
+
+    &.icon-news {
+        background-image: url('../images/toolbar/icons/news.png');
+        width: 41px;
+        height: 44px;
+        background-size: contain;
+        image-rendering: pixelated;
     }
 
     &.icon-house {

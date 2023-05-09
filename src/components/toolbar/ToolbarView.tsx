@@ -17,7 +17,7 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = props =>
     const { requests = [] } = useFriends();
     const { iconState = MessengerIconState.HIDDEN } = useMessenger();
     const isMod = GetSessionDataManager().isModerator;
-    
+
     useMessageEvent<PerkAllowancesMessageEvent>(PerkAllowancesMessageEvent, event =>
     {
         const parser = event.getParser();
@@ -30,7 +30,7 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = props =>
         const target = (document.body.getElementsByClassName(iconName)[0] as HTMLElement);
 
         if(!target) return;
-        
+
         image.className = 'toolbar-icon-animation';
         image.style.visibility = 'visible';
         image.style.left = (x + 'px');
@@ -96,6 +96,9 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = props =>
                 </Flex>
                 <Flex alignItems="center" gap={ 2 }>
                     <Flex gap={ 2 }>
+                        { !isInRoom && <Base pointer className="navigation-item icon icon-news" onClick={ event => {
+                            window.open('/community/articles', '_blank')
+                        } }/> }
                         <Base pointer className="navigation-item icon icon-friendall" onClick={ event => CreateLinkEvent('friends/toggle') }>
                             { (requests.length > 0) &&
                                 <LayoutItemCountView count={ requests.length } /> }
