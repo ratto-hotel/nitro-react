@@ -51,6 +51,14 @@
         image-rendering: pixelated;
     }
 
+    &.icon-twitch {
+        background-image: url('../images/toolbar/icons/twitch.png');
+        width: 44px;
+        height: 44px;
+        background-size: contain;
+        image-rendering: pixelated;
+    }
+
     &.icon-house {
         background-image: url('../images/toolbar/icons/house.png');
         height: 30px;

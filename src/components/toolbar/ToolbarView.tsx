@@ -82,7 +82,7 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = props =>
                         { !isInRoom &&
                             <Base pointer className="navigation-item icon no-color icon-house" onClick={ event => CreateLinkEvent('navigator/goto/home') } /> }
                         <Base pointer className="navigation-item icon no-color icon-rooms" onClick={ event => CreateLinkEvent('navigator/toggle') } />
-                        <Base pointer className="navigation-item icon no-color icon-catalog" onClick={ event => CreateLinkEvent('catalog/toggle') } />
+                        <Base pointer className="navigation-item icon no-color icon-catalog" onClick={ event => CreateLinkEvent('catalog/toggle')} />
                         <Base pointer className="navigation-item icon no-color icon-inventory" onClick={ event => CreateLinkEvent('inventory/toggle') }>
                             { (getFullCount > 0) &&
                                 <LayoutItemCountView count={ getFullCount } /> }
@@ -99,6 +99,7 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = props =>
                         { !isInRoom && <Base pointer className="navigation-item icon no-color icon-news" onClick={ event => {
                             window.open('/community/articles', '_blank')
                         } }/> }
+                        <Base pointer className="navigation-item icon no-color icon-twitch" onClick={ event => CreateLinkEvent('twitch/toggle') } />
                         <Base pointer className="navigation-item icon no-color icon-friendall" onClick={ event => CreateLinkEvent('friends/toggle') }>
                             { (requests.length > 0) &&
                                 <LayoutItemCountView count={ requests.length } /> }

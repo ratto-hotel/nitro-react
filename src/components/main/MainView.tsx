@@ -26,6 +26,7 @@ import { ToolbarView } from '../toolbar/ToolbarView';
 import { UserProfileView } from '../user-profile/UserProfileView';
 import { UserSettingsView } from '../user-settings/UserSettingsView';
 import { WiredView } from '../wired/WiredView';
+import {TwitchView} from '../twitch/TwitchView';
 
 export const MainView: FC<{}> = props =>
 {
@@ -44,13 +45,13 @@ export const MainView: FC<{}> = props =>
 
     useEffect(() =>
     {
-        const linkTracker: ILinkEventTracker = { 
+        const linkTracker: ILinkEventTracker = {
             linkReceived: (url: string) =>
             {
                 const parts = url.split('/');
-        
+
                 if(parts.length < 2) return;
-        
+
                 switch(parts[1])
                 {
                     case 'open':
@@ -93,6 +94,7 @@ export const MainView: FC<{}> = props =>
             <NavigatorView />
             <InventoryView />
             <CatalogView />
+            <TwitchView/>
             <FriendsView />
             <RightSideView />
             <UserSettingsView />
