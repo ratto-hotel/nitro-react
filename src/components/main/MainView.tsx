@@ -27,6 +27,7 @@ import { UserProfileView } from '../user-profile/UserProfileView';
 import { UserSettingsView } from '../user-settings/UserSettingsView';
 import { WiredView } from '../wired/WiredView';
 import {TwitchView} from '../twitch/TwitchView';
+import {RadioView} from '../radio/RadioView';
 
 export const MainView: FC<{}> = props =>
 {
@@ -81,6 +82,7 @@ export const MainView: FC<{}> = props =>
 
     return (
         <Base fit>
+            <RadioView/>
             <TransitionAnimation type={ TransitionAnimationTypes.FADE_IN } inProp={ landingViewVisible } timeout={ 300 }>
                 <HotelView />
             </TransitionAnimation>

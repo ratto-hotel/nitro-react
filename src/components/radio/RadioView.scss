@@ -1,0 +1,29 @@
+.radio-view {
+    width: 300px;
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center center;
+    image-rendering: pixelated;
+
+    .radio-button {
+        background-color: transparent;
+        background-image: url('../../assets/images/radio/play.png');
+        border: none;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        image-rendering: pixelated;
+        cursor: pointer;
+
+        &.playing {
+            background-image: url('../../assets/images/radio/pause.png');
+        }
+    }
+
+}

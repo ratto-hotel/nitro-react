@@ -1,20 +1,20 @@
-import { RoomSessionEvent } from '@nitrots/nitro-renderer';
-import { FC, useCallback, useState } from 'react';
-import { GetConfiguration, GetConfigurationManager } from '../../api';
-import { LayoutAvatarImageView } from '../../common';
-import { useRoomSessionManagerEvent, useSessionInfo } from '../../hooks';
-import { WidgetSlotView } from './views/widgets/WidgetSlotView';
+import {RoomSessionEvent} from '@nitrots/nitro-renderer';
+import {FC, useCallback, useState} from 'react';
+import {GetConfiguration, GetConfigurationManager} from '../../api';
+import {LayoutAvatarImageView} from '../../common';
+import {useRoomSessionManagerEvent, useSessionInfo} from '../../hooks';
+import {WidgetSlotView} from './views/widgets/WidgetSlotView';
 
 const widgetSlotCount = 7;
 
 export const HotelView: FC<{}> = props =>
 {
     const [ isVisible, setIsVisible ] = useState(true);
-    const { userFigure = null } = useSessionInfo();
+    const {userFigure = null} = useSessionInfo();
 
     const onRoomSessionEvent = useCallback((event: RoomSessionEvent) =>
     {
-        switch(event.type)
+        switch (event.type)
         {
             case RoomSessionEvent.CREATED:
                 setIsVisible(false);
@@ -28,7 +28,7 @@ export const HotelView: FC<{}> = props =>
     useRoomSessionManagerEvent(RoomSessionEvent.CREATED, onRoomSessionEvent);
     useRoomSessionManagerEvent(RoomSessionEvent.ENDED, onRoomSessionEvent);
 
-    if(!isVisible) return null;
+    if (!isVisible) return null;
 
     const backgroundColor = GetConfiguration('hotelview')['images']['background.colour'];
     const background = GetConfigurationManager().interpolate(GetConfiguration('hotelview')['images']['background']);
@@ -39,7 +39,8 @@ export const HotelView: FC<{}> = props =>
     const right = GetConfigurationManager().interpolate(GetConfiguration('hotelview')['images']['right']);
 
     return (
-        <div className="nitro-hotel-view" style={ (backgroundColor && backgroundColor) ? { background: backgroundColor } : {} }>
+        <div className="nitro-hotel-view"
+             style={ (backgroundColor && backgroundColor) ? {background: backgroundColor} : {} }>
             <div className="container h-100 py-3 overflow-hidden landing-widgets">
                 <div className="row h-100">
                     <div className="col-9 h-100 d-flex flex-column">
@@ -86,20 +87,26 @@ export const HotelView: FC<{}> = props =>
                         <WidgetSlotView
                             widgetSlot={ 7 }
                             widgetType={ GetConfiguration('hotelview')['widgets']['slot.' + 7 + '.widget'] }
-                            widgetConf={ GetConfiguration('hotelview')['widgets']['slot.' + 7 +'.conf'] }
+                            widgetConf={ GetConfiguration('hotelview')['widgets']['slot.' + 7 + '.conf'] }
                         />
                     </div>
                 </div>
             </div>
-            <div className="background position-absolute" style={ (background && background.length) ? { backgroundImage: `url(${ background })` } : {} } />
-            <div className="sun position-absolute" style={ (sun && sun.length) ? { backgroundImage: `url(${ sun })` } : {} } />
-            <div className="drape position-absolute" style={ (drape && drape.length) ? { backgroundImage: `url(${ drape })` } : {} } />
-            <div className="left position-absolute" style={ (left && left.length) ? { backgroundImage: `url(${ left })` } : {} } />
-            <div className="right-repeat position-absolute" style={ (rightRepeat && rightRepeat.length) ? { backgroundImage: `url(${ rightRepeat })` } : {} } />
-            <div className="right position-absolute" style={ (right && right.length) ? { backgroundImage: `url(${ right })` } : {} } />
+            <div className="background position-absolute"
+                 style={ (background && background.length) ? {backgroundImage: `url(${ background })`} : {} }/>
+            <div className="sun position-absolute"
+                 style={ (sun && sun.length) ? {backgroundImage: `url(${ sun })`} : {} }/>
+            <div className="drape position-absolute"
+                 style={ (drape && drape.length) ? {backgroundImage: `url(${ drape })`} : {} }/>
+            <div className="left position-absolute"
+                 style={ (left && left.length) ? {backgroundImage: `url(${ left })`} : {} }/>
+            <div className="right-repeat position-absolute"
+                 style={ (rightRepeat && rightRepeat.length) ? {backgroundImage: `url(${ rightRepeat })`} : {} }/>
+            <div className="right position-absolute"
+                 style={ (right && right.length) ? {backgroundImage: `url(${ right })`} : {} }/>
             { GetConfiguration('hotelview')['show.avatar'] && (
-                <div className="avatar-image">
-                    <LayoutAvatarImageView figure={ userFigure } direction={ 2 } />
+                <div className="avatar-image" style={ {bottom: '0', left: '67px'} }>
+                    <LayoutAvatarImageView figure={ userFigure } direction={ 2 }/>
                 </div>
             ) }
         </div>
