@@ -3,6 +3,7 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import './RadioView.scss'
 import {Column, Grid} from '../../common';
 
+const radioSrc = 'https://f41.fabricahost.com.br/metrosppop?f=1683712964N01H02HSY27Q40XE3T543RDC16D&amp;tid=01H02HR78PY0NHKTZM3XH1841S'
 export const RadioView = () =>
 {
 
@@ -25,14 +26,9 @@ export const RadioView = () =>
 
     const fetchData = useCallback(() =>
     {
-        console.log('fetching song info')
         fetch('https://m985.com.br/api/last/pop')
             .then(response => response.json())
-            .then(data =>
-            {
-                console.log('song info retrieved')
-                setSongData(() => data)
-            })
+            .then(data => setSongData(() => data))
             .catch(console.error)
     }, [])
 
@@ -45,7 +41,6 @@ export const RadioView = () =>
         }, 20000)
         return () =>
         {
-            console.log('stopped fetching')
             clearInterval(timer)
         }
     }, [ fetchData ])
@@ -54,11 +49,11 @@ export const RadioView = () =>
     {
         if (audioRef.current)
         {
-            audioRef.current?.addEventListener('play', () =>
+            audioRef.current.addEventListener('play', () =>
             {
                 setIsPlaying(true)
             });
-            audioRef.current?.addEventListener('pause', () =>
+            audioRef.current.addEventListener('pause', () =>
             {
                 setIsPlaying(false)
             });
@@ -70,11 +65,11 @@ export const RadioView = () =>
               alignItems={ 'center' }
               style={ {backgroundImage: songData?.song?.cover && `url('${ songData?.song?.cover }')`} }>
             <Column size={ 2 } style={ {paddingLeft: '10px'} }>
-                <audio controls={ false } ref={ audioRef }>
+                { isPlaying && <audio controls={ false } ref={ audioRef } autoPlay={ true }>
                     <source
                         type={ 'audio/aac' }
-                        src="https://f41.fabricahost.com.br/metrosppop?f=1683712964N01H02HSY27Q40XE3T543RDC16D&amp;tid=01H02HR78PY0NHKTZM3XH1841S"/>
-                </audio>
+                        src={ radioSrc }/>
+                </audio> }
                 <button onClick={ handle }
                         className={ 'radio-button ' + (isPlaying ? 'playing' : '') }/>
             </Column>
